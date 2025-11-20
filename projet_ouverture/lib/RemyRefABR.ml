@@ -1,32 +1,17 @@
 open TreeRef
 
-let splitTreeRef tree i list_node =
-  let piece = Random.int 2 in
-  let enfant = ref Empty in
-  match !tree with
-  | Empty ->
-      tree := Node (enfant, ref Empty);
-      list_node.(i) <- tree;
-      list_node.(i+1) <- enfant
-  | Node (_, _) ->
-      if piece = 0 then (
-        tree := Node (ref !tree, enfant);  (* copie de l'ancien noeud dans left *)
-        list_node.(i) <- tree;
-        list_node.(i+1) <- enfant
-      ) else (
-        tree := Node (enfant, ref !tree);  (* copie de l'ancien noeud dans right *)
-        list_node.(i) <- enfant;
-        list_node.(i+1) <- tree
-      )
+let splitTreeRefABR tree value nb_leaf list_empty =
+  let gauche = ref Empty in
+  let droit = ref Empty in
+  tree := Node(gauche, droit);
+  list_empty.(value) <- gauche;      (* remplacer la feuille tirée par gauche *)
+  list_empty.(nb_leaf) <- droit       (* ajouter la droite à la fin *)
 
 
-
-let rec algoRemyRef n i list_node =
-  if n = 0 then () 
-  else (
-    let value = Random.int i in
-    (
-    splitTreeRef list_node.(value) i list_node;
-    algoRemyRef (n - 1) (i+2) list_node
-    )
-  )
+let rec algoRemyRefABR n nb_leaf list_empty =
+  if n = 0 then ()
+  else
+    let value = Random.int nb_leaf in   (* tirage parmi toutes les feuilles existantes *)
+    splitTreeRefABR list_empty.(value) value nb_leaf list_empty;
+    algoRemyRefABR (n-1) (nb_leaf+1) list_empty
+  
