@@ -12,3 +12,12 @@ let () =
   algoRemyRefABR n 1 list_empty;
   export_tree_to_dot "arbre.dot" !(arbre);
   print_endline "Fichier arbre.dot généré !"
+
+  (* Pour RemyRef :
+      print_string "Entrez un nombre n : ";
+      let n = read_int () in
+      let list_node = Array.init (2 * n+1) (fun _ -> ref Empty) in
+      algoRemyRef n 1 list_empty;
+      export_tree_to_dot "arbre.dot" !(list_empty.(0));
+      print_endline "Fichier arbre.dot généré !"
+  *)
