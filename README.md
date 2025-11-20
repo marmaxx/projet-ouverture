@@ -16,7 +16,9 @@ Ce projet implémente **l’algorithme de Rémy** pour générer aléatoirement 
 
 ### Installer Dune (si non installé)
 
+```bash
 opam install dune
+```
 
 ---
 
