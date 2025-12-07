@@ -32,3 +32,6 @@ _build/
 
 # Windows system files
 Thumbs.db
+
+# Graphviz files
+*.dot
