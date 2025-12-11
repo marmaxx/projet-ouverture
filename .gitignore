@@ -35,3 +35,5 @@ Thumbs.db
 
 # Graphviz files
 *.dot
+
+projet_ouverture/*.pdf

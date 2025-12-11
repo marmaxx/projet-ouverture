@@ -10,16 +10,14 @@ let splitTreeRef tree i list_node =
       list_node.(i+1) <- enfant
   | Node (_, _) ->
       if piece = 0 then (
-        tree := Node (ref !tree, enfant);  (* copie de l'ancien noeud dans left *)
+        tree := Node (tree, enfant);  (* copie de l'ancien noeud dans left *)
         list_node.(i) <- tree;
         list_node.(i+1) <- enfant
       ) else (
-        tree := Node (enfant, ref !tree);  (* copie de l'ancien noeud dans right *)
+        tree := Node (enfant, tree);  (* copie de l'ancien noeud dans right *)
         list_node.(i) <- enfant;
         list_node.(i+1) <- tree
       )
-
-
 
 let rec algoRemyRef n i list_node =
   if n = 0 then () 
