@@ -37,3 +37,6 @@ Thumbs.db
 *.dot
 
 projet_ouverture/*.pdf
+projet_ouverture/*.csv
+
+.venv/

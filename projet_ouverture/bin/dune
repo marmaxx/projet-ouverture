@@ -1,3 +1,7 @@
 (executable
  (name main)
  (libraries projet_ouverture))
+
+(executable
+ (name bench)
+ (libraries projet_ouverture unix))
